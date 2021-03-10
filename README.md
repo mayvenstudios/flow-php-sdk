@@ -17,6 +17,11 @@ To add this SDK to your project using Composer, use the following:
 composer require mayvenstudios/flow-php-sdk
 ```
 
+### Install the grpc extension
+```
+$ [sudo] pecl install grpc
+```
+
 ## Example Usage
 
 Coming soon
