@@ -1,7 +1,3 @@
-# flow-php-sdk
-PHP SDK for the Flow blockchain
-
-
 # Flow PHP SDK
 
 > :warning: This is an alpha release; functionality may change.
@@ -9,8 +5,8 @@ PHP SDK for the Flow blockchain
 This is a simple SDK for PHP that will allow you to interact with the Flow blockchain.
 
 At the moment, the SDK includes the following features:
-- [ ] Communication with the [Flow Access API](https://docs.onflow.org/access-api) over gRPC (coming soon)_
-- [ ] Transaction preparation and signing (coming soon)_
+- [ ] _Communication with the [Flow Access API](https://docs.onflow.org/access-api) over gRPC (coming soon)_
+- [ ] _Transaction preparation and signing (coming soon)_
 - [ ] _Events parsing (coming soon)_
 
 ## Installation
@@ -33,4 +29,8 @@ Read the [contributing guide](https://github.com/mayvenstudios/flow-php-sdk/blob
 
 ## Dependencies
 
-Java Developer Kit (JDK) 8 or better
+[Protobuf-PHP](https://github.com/drslump/Protobuf-PHP)
+
+## License
+
+[Apache License 2.0](http://www.apache.org/licenses/)
