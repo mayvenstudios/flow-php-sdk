@@ -1,0 +1,15 @@
+{
+    "name": "mayvenstudios/flow-php-sdk",
+    "description": "PHP SDK for the Flow blockchain",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Luca Basile",
+            "email": "luca@mayvenstudios.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2.0"
+    }
+}
