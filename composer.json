@@ -25,11 +25,5 @@
             "Flow\\": "src/Flow/",
             "GPBMetadata\\": "src/GPBMetadata/"
         }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-            ]
-        }
     }
 }
