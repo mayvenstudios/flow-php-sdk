@@ -2,7 +2,7 @@
 
 namespace FlowSDK;
 
-class FlowServiceProvider {
+class FlowSDKServiceProvider {
 
     public function __construct()
     {
