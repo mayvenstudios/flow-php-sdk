@@ -2,6 +2,7 @@
     "name": "mayvenstudios/flow-php-sdk",
     "description": "PHP SDK for the Flow blockchain",
     "type": "library",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Luca Basile",
@@ -28,7 +29,6 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FlowSDK\\FlowSDKServiceProvider"
             ]
         }
     }
