@@ -67,9 +67,9 @@ class Flow {
             $cmd[] = json_encode($this->args);
         }
 
-        if(config('services.flow.network') != 'emulator'){
+        if(config('flow.network') != 'emulator'){
             $cmd[] = '--network';
-            $cmd[] = config('services.flow.network');
+            $cmd[] = config('flow.network');
             if($this->type == 'transaction') {
                 $cmd[] = '--signer';
                 $cmd[] = 'testnet-account';
