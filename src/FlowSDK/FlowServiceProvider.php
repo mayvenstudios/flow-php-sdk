@@ -15,7 +15,7 @@ class FlowServiceProvider extends ServiceProvider{
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/flow.php', 'flow');
+        $this->mergeConfigFrom(__DIR__.'/../../config/flow.php', 'flow');
 
         //$this->app->singleton(Flow::class, function () {
         //    return new Flow();
