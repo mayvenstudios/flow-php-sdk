@@ -9,7 +9,7 @@ class FlowServiceProvider extends ServiceProvider{
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/flow.php' => config_path('flow.php'),
+            __DIR__.'/../../config/flow.php' => config_path('flow.php'),
         ]);
     }
 
