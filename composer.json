@@ -14,16 +14,29 @@
         "php": ">=7.0.0",
         "grpc/grpc": "dev-master",
         "google/protobuf": "dev-master",
-        "protobuf-php/protobuf": "0.1.x-dev"
+        "protobuf-php/protobuf": "0.1.x-dev",
+        "alchemy/binary-driver": "^5.0",
+        "illuminate/support": "^7.0|^8.0",
+        "symfony/process": "^5.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8"
+        "orchestra/testbench": "^5.0|^6.0"
     },
     "autoload": {
         "psr-4": {
             "FlowSDK\\": "src/FlowSDK/",
             "Flow\\": "src/Flow/",
             "GPBMetadata\\": "src/GPBMetadata/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FlowSDK\\FlowServiceProvider"
+            ],
+            "aliases": {
+                "Flow": "FlowSDK\\Facade\\Flow"
+            }
         }
     }
 }
