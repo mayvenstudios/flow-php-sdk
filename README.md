@@ -4,7 +4,7 @@
 
 This is a Laravel PHP package that allows you to interact with the Flow blockchain by using the [Flow CLI](https://github.com/onflow/flow-cli).
 
-In the future we'll mnake a full integration with the GRPC interface, but for now it's just a wrapper around the [Flow CLI](https://github.com/onflow/flow-cli).
+In the future we'll make a full integration with the GRPC interface, but for now it's just a wrapper around the [Flow CLI](https://github.com/onflow/flow-cli).
 
 At the moment, the SDK includes the following features:
 - [x] Wrapper around [Flow CLI](https://github.com/onflow/flow-cli) for basic scripts, transactions, events and block calls.
