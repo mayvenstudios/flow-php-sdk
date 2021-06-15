@@ -17,7 +17,8 @@
         "protobuf-php/protobuf": "0.1.x-dev",
         "alchemy/binary-driver": "^5.0",
         "illuminate/support": "^7.0|^8.0",
-        "symfony/process": "^5.0"
+        "symfony/process": "^5.0",
+        "simplito/elliptic-php": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0|^6.0"
