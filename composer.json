@@ -18,7 +18,7 @@
         "alchemy/binary-driver": "^5.0",
         "illuminate/support": "^7.0|^8.0",
         "symfony/process": "^5.0",
-        "simplito/elliptic-php": "dev-master"
+        "simplito/elliptic-php": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0|^6.0"
