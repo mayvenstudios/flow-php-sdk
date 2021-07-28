@@ -47,7 +47,9 @@ class Flow {
             $cmd[] = 'events';
             $cmd[] = 'get';
             $cmd[] = $this->eventName;
+            $cmd[] = '--start';
             $cmd[] = $this->eventMinBlock;
+            $cmd[] = '--end';
             $cmd[] = $this->eventMaxBlock;
         } else if($this->type == 'block'){
             $cmd[] = 'blocks';
