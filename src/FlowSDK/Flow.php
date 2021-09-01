@@ -171,6 +171,10 @@ class Flow {
         return $this->argGeneric('UInt64', ''.$value);
     }
 
+    public function argInt32($value){
+        return $this->argGeneric('UInt32', ''.$value);
+    }
+
     public function argFix($value){
         return $this->argGeneric('UFix64', ''.number_format($value, 2, '.', ''));
     }
