@@ -15,6 +15,7 @@ class Flow {
     protected $eventMinBlock;
     protected $eventMaxBlock;
     protected $extraParam;
+    protected $gasLimit;
 
     function __construct()
     {
@@ -75,6 +76,8 @@ class Flow {
             if($this->type == 'transaction') {
                 $cmd[] = '--signer';
                 $cmd[] = $this->signer;
+                $cmd[] = '--gas-limit';
+                $cmd[] = $this->gasLimit;
             }
         }
         $cmd[] = '-o';
@@ -99,6 +102,7 @@ class Flow {
         $this->eventMaxBlock = 0;
         $this->extraParam = '';
         $this->signer = 'testnet-account';
+        $this->gasLimit = 9999;
     }
 
     public function transaction($file){
@@ -150,6 +154,11 @@ class Flow {
 
     public function maxBlock($height){
         $this->eventMaxBlock = $height;
+        return $this;
+    }
+
+    public function gasLimit($limit){
+        $this->gasLimit = $limit;
         return $this;
     }
 
