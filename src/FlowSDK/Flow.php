@@ -11,7 +11,7 @@ class Flow {
     protected $file;
     protected $args;
     protected $signer;
-    protected $eventName;
+    protected $eventNames;
     protected $eventMinBlock;
     protected $eventMaxBlock;
     protected $extraParam;
@@ -41,12 +41,14 @@ class Flow {
             $cmd[] = 'execute';
             $cmd[] = $this->file;
         } else if($this->type == 'event'){
-            if(!$this->eventName){
+            if(count($this->eventNames) < 1){
                 return false;
             }
             $cmd[] = 'events';
             $cmd[] = 'get';
-            $cmd[] = $this->eventName;
+            foreach($this->eventNames as $eventName) {
+                $cmd[] = $eventName;
+            }
             $cmd[] = '--start';
             $cmd[] = $this->eventMinBlock;
             $cmd[] = '--end';
@@ -97,7 +99,7 @@ class Flow {
         $this->type = '';
         $this->file = '';
         $this->args = [];
-        $this->eventName = '';
+        $this->eventNames = [];
         $this->eventMinBlock = 0;
         $this->eventMaxBlock = 0;
         $this->extraParam = '';
@@ -122,7 +124,11 @@ class Flow {
     public function event($name){
         $this->resetParams();
         $this->type = 'event';
-        $this->eventName = $name;
+        $this->eventNames[] = $name;
+        return $this;
+    }
+    public function addEvent($name){
+        $this->eventNames[] = $name;
         return $this;
     }
 
@@ -139,11 +145,6 @@ class Flow {
 
     public function signer($signer){
         $this->signer = $signer;
-        return $this;
-    }
-
-    public function eventName($eventName){
-        $this->eventName = $eventName;
         return $this;
     }
 
@@ -179,6 +180,9 @@ class Flow {
     public function argInt($value){
         return $this->argGeneric('UInt64', ''.$value);
     }
+    public function argIntOptional($value){
+        return $this->argGeneric('Optional', ['type' => 'UInt64', 'value' => $value]);
+    }
 
     public function argInt32($value){
         return $this->argGeneric('UInt32', ''.$value);
@@ -187,9 +191,15 @@ class Flow {
     public function argFix($value){
         return $this->argGeneric('UFix64', ''.number_format($value, 2, '.', ''));
     }
+    public function argFixOptional($value){
+        return $this->argGeneric('Optional', ['type' => 'UFix64', 'value' => ''.number_format($value, 2, '.', '')]);
+    }
 
     public function argString($value){
         return $this->argGeneric('String', $value);
+    }
+    public function argStringOptional($value){
+        return $this->argGeneric('Optional', ['type' => 'String', 'value' => $value]);
     }
 
     public function argAddress($value){
@@ -214,6 +224,36 @@ class Flow {
             ];
         });
         return $this->argGeneric('Dictionary', $mappedArr->values()->toArray());
+    }
+
+    public function argArrayString($arr){
+        $mappedArr = collect($arr)->map(function($val){
+            return [
+                    'type' => 'String',
+                    'value' => $val
+            ];
+        });
+        return $this->argGeneric('Array', $mappedArr->values()->toArray());
+    }
+
+    public function argArrayInt($arr){
+        $mappedArr = collect($arr)->map(function($val){
+            return [
+                'type' => 'UInt64',
+                'value' => $val
+            ];
+        });
+        return $this->argGeneric('Array', $mappedArr->values()->toArray());
+    }
+
+    public function argArrayFix($arr){
+        $mappedArr = collect($arr)->map(function($val){
+            return [
+                'type' => 'UFix64',
+                'value' => $val
+            ];
+        });
+        return $this->argGeneric('Array', $mappedArr->values()->toArray());
     }
 
     public function getLatestBlock(){
