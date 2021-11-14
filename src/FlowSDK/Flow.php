@@ -271,4 +271,8 @@ class Flow {
             ->argInt($id)
             ->run();
     }
+
+    public function debug(){
+        $this->outputDebug = true;
+    }
 }
