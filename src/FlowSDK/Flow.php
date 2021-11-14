@@ -274,5 +274,6 @@ class Flow {
 
     public function debug(){
         $this->outputDebug = true;
+        return $this;
     }
 }
