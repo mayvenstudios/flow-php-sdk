@@ -187,7 +187,7 @@ class Flow {
         return $this->argGeneric('UInt64', ''.$value);
     }
     public function argIntOptional($value){
-        return $this->argGeneric('Optional', ['type' => 'UInt64', 'value' => $value]);
+        return $this->argGeneric('Optional', ['type' => 'UInt64', 'value' => ''.$value]);
     }
 
     public function argInt32($value){
@@ -246,7 +246,7 @@ class Flow {
         $mappedArr = collect($arr)->map(function($val){
             return [
                 'type' => 'UInt64',
-                'value' => $val
+                'value' => ''.$val
             ];
         });
         return $this->argGeneric('Array', $mappedArr->values()->toArray());
@@ -256,7 +256,7 @@ class Flow {
         $mappedArr = collect($arr)->map(function($val){
             return [
                 'type' => 'UFix64',
-                'value' => $val
+                'value' => ''.number_format($val, 2, '.', '')
             ];
         });
         return $this->argGeneric('Array', $mappedArr->values()->toArray());
