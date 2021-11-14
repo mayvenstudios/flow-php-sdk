@@ -16,6 +16,7 @@ class Flow {
     protected $eventMaxBlock;
     protected $extraParam;
     protected $gasLimit;
+    protected $outputDebug;
 
     function __construct()
     {
@@ -85,6 +86,10 @@ class Flow {
         $cmd[] = '-o';
         $cmd[] = 'json';
 
+        if($this->outputDebug){
+            info(print_r($cmd,true));
+        }
+
         $process = new Process($cmd, base_path('cadence'));
         $process->run();
 
@@ -105,6 +110,7 @@ class Flow {
         $this->extraParam = '';
         $this->signer = 'testnet-account';
         $this->gasLimit = 9999;
+        $this->outputDebug = false;
     }
 
     public function transaction($file){
