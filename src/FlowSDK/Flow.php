@@ -262,6 +262,16 @@ class Flow {
         return $this->argGeneric('Array', $mappedArr->values()->toArray());
     }
 
+    public function argArrayInt32($arr){
+        $mappedArr = collect($arr)->map(function($val){
+            return [
+                'type' => 'UInt32',
+                'value' => ''.$val
+            ];
+        });
+        return $this->argGeneric('Array', $mappedArr->values()->toArray());
+    }
+
     public function argArrayFix($arr){
         $mappedArr = collect($arr)->map(function($val){
             return [
