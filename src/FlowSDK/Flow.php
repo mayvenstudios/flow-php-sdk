@@ -242,6 +242,16 @@ class Flow {
         return $this->argGeneric('Array', $mappedArr->values()->toArray());
     }
 
+    public function argArrayBool($arr){
+        $mappedArr = collect($arr)->map(function($val){
+            return [
+                'type' => 'Bool',
+                'value' => $val
+            ];
+        });
+        return $this->argGeneric('Array', $mappedArr->values()->toArray());
+    }
+
     public function argArrayInt($arr){
         $mappedArr = collect($arr)->map(function($val){
             return [
