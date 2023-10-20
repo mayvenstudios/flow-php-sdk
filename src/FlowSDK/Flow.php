@@ -17,6 +17,7 @@ class Flow {
     protected $extraParam;
     protected $gasLimit;
     protected $outputDebug;
+    protected $key;
 
     function __construct()
     {
@@ -62,6 +63,14 @@ class Flow {
             } else {
                 $cmd[] = 'latest';
             }
+        } else if($this->type == 'createAccount'){
+            $cmd[] = 'accounts';
+            $cmd[] = 'create';
+            $cmd[] = '--key';
+            $cmd[] = $this->key;
+        } else if($this->type == 'generateKey'){
+            $cmd[] = 'keys';
+            $cmd[] = 'generate';
         }
 
         if($this->extraParam != '') {
@@ -73,14 +82,16 @@ class Flow {
             $cmd[] = json_encode($this->args);
         }
 
-        if(config('flow.network') != 'emulator'){
+        if(config('flow.network') != 'emulator' && !$this->type == 'generateKey'){
             $cmd[] = '--network';
             $cmd[] = config('flow.network');
-            if($this->type == 'transaction') {
+            if($this->type == 'transaction' || $this->type == 'createAccount') {
                 $cmd[] = '--signer';
                 $cmd[] = $this->signer;
-                $cmd[] = '--gas-limit';
-                $cmd[] = $this->gasLimit;
+                if($this->type == 'transaction') {
+                    $cmd[] = '--gas-limit';
+                    $cmd[] = $this->gasLimit;
+                }
             }
         }
         $cmd[] = '-o';
@@ -111,6 +122,7 @@ class Flow {
         $this->signer = 'testnet-account';
         $this->gasLimit = 9999;
         $this->outputDebug = false;
+        $this->key = '';
     }
 
     public function transaction($file){
@@ -141,6 +153,20 @@ class Flow {
     public function block(){
         $this->resetParams();
         $this->type = 'block';
+        return $this;
+    }
+
+
+    public function createAccount($key){
+        $this->resetParams();
+        $this->type = 'createAccount';
+        $this->key = $key;
+        return $this;
+    }
+
+    public function generateKey(){
+        $this->resetParams();
+        $this->type = 'generateKey';
         return $this;
     }
 
