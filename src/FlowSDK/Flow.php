@@ -83,7 +83,7 @@ class Flow {
             $cmd[] = json_encode($this->args);
         }
 
-        if(config('flow.network') != 'emulator' && !$this->type == 'generateKey'){
+        if(config('flow.network') != 'emulator' && $this->type != 'generateKey'){
             $cmd[] = '--network';
             $cmd[] = config('flow.network');
             if($this->type == 'transaction' || $this->type == 'createAccount') {
