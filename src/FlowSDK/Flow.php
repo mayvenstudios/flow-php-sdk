@@ -18,6 +18,7 @@ class Flow {
     protected $gasLimit;
     protected $outputDebug;
     protected $key;
+    protected $configFile;
 
     function __construct()
     {
@@ -94,6 +95,12 @@ class Flow {
                 }
             }
         }
+
+        if($this->configFile){
+            $cmd[] = '--config-path';
+            $cmd[] = $this->configFile;
+        }
+
         $cmd[] = '-o';
         $cmd[] = 'json';
 
@@ -123,6 +130,7 @@ class Flow {
         $this->gasLimit = 9999;
         $this->outputDebug = false;
         $this->key = '';
+        $this->configFile = '';
     }
 
     public function transaction($file){
@@ -177,6 +185,11 @@ class Flow {
 
     public function signer($signer){
         $this->signer = $signer;
+        return $this;
+    }
+
+    public function configFile($path){
+        $this->configFile = $path;
         return $this;
     }
 
